@@ -31,12 +31,13 @@ class User
   before_destroy :cancel_subscription
 
   def update_plan(role)
-    self.role_ids = []
+    self.roles = []
     self.add_role(role.name)
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
       customer.update_subscription(:plan => role.name)
     end
+    self.save
     true
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
