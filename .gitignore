@@ -77,3 +77,6 @@ pickle-email-*.html
 /config/application.yml
 config/application.yml
 /config/mongoid.yml
+config/application.yml
+
+config/application.yml
