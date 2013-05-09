@@ -1,5 +1,8 @@
+________
+________
 This repo (https://github.com/marks/rails-stripe-membership-saas)'s `mongoid` branch is marks/@Skram's experiment to port `rails-stripe-membership-saas` to work with MongoDB complements of the mongoid gem.
 
+________
 ________
 
 h1. !http://railsapps.github.io/images/rails-36x36.jpg(Rails Application for a Membership, Subscription, or SaaS Site)! Rails App for a Membership, Subscription, or SaaS Site
