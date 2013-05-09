@@ -1,3 +1,7 @@
+This repo (https://github.com/marks/rails-stripe-membership-saas)'s `mongoid` branch is marks/@Skram's experiment to port `rails-stripe-membership-saas` to work with MongoDB complements of the mongoid gem.
+
+________
+
 h1. !http://railsapps.github.io/images/rails-36x36.jpg(Rails Application for a Membership, Subscription, or SaaS Site)! Rails App for a Membership, Subscription, or SaaS Site
 
 Rails 3.2 example application with recurring billing using Stripe. Use for a Rails membership site, subscription site, or SaaS site (software-as-a-service). Using:
