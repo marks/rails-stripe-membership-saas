@@ -1,4 +1,22 @@
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  # field list for mongoid from original schema.rb
+  field :encrypted_password, :type => String
+  field :email, :type => String
+  field :reset_password_token, :type => String
+  field :reset_password_sent_at, :type => DateTime
+  field :remember_created_at, :type => DateTime
+  field :sign_in_count, :type => Integer
+  field :current_sign_in_at, :type => DateTime
+  field :last_sign_in_at, :type => DateTime
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip, :type => String
+  field :name, :type => String
+  field :customer_id, :type => String
+  field :last_4_digits, :type => String
+
   rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -25,7 +43,7 @@ class User < ActiveRecord::Base
     errors.add :base, "Unable to update your subscription. #{e.message}."
     false
   end
-  
+
   def update_stripe
     return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?
@@ -67,7 +85,7 @@ class User < ActiveRecord::Base
     self.stripe_token = nil
     false
   end
-  
+
   def cancel_subscription
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
@@ -82,10 +100,10 @@ class User < ActiveRecord::Base
     errors.add :base, "Unable to cancel your subscription. #{e.message}."
     false
   end
-  
+
   def expire
     UserMailer.expire_email(self).deliver
     destroy
   end
-  
+
 end
